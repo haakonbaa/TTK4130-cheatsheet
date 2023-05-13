@@ -1,0 +1,181 @@
+\section{Rotations}
+
+\setcounter{section}{6}
+\setcounter{subsection}{1}
+\subsection{Vectors} %% ------------------------------------ 6 . 2 -------------
+
+The \textit{skew-symetric} matrix form of the coordinate vector $\mathbf{u}$ is defined by
+\[\mathbf{u}^x=\begin{pmatrix}
+    0    & -u_3 & u_2 \\
+    u_3  & 0    & -u_1 \\
+    -u_2 & u_1  & 0 
+\end{pmatrix}\]
+
+Notation: \(\bm{v}_{ab}^c\) means the vector from point \(a\) to point \(b\) (or often the origo of the reference frames \(a\) and \(b\)) described in the reference frame \(c\)
+\newline
+
+\setcounter{subsection}{3}
+\subsection{The Rotation Matrix} %%------------------------- 6 . 4 -------------
+
+The coordinate transformation from frame \(\mathit{b}\) to frame \(\mathit{a}\) is given by
+\[
+\bm{v}^a = \bm{R}_b^a\bm{v}^b
+\]
+
+Properties of the rotation matrix
+\begin{align*}
+    \bm{R}_a^b \bm{R}_b^a &= \bm{I}=  \bm{R}_b^a \bm{R}_a^b\\
+    (\bm{R}_a^b)^{-1} &= (\bm{R}_a^b)^{T} = \bm{R}_b^a \\
+    \bm{R}_b^a &= \begin{pmatrix}\bm{b}_1^a& \bm{b}_2^a& \bm{b}_3^a\end{pmatrix} \\
+    \det{\bm{R}_a^b} &= 1
+\end{align*}
+
+\(\bm{R}\) is a rotation matrix if and only if it is an element of \(\mathit{SO}(3)\)
+\[\mathit{SO}(3) = \{\bm{R} \in \RR^{3\times3} | \bm{R}^T\bm{R} = \bm{I} \wedge \det \bm{R} = 1\}\]
+
+Rotation matrices in three dimentions
+\begin{align*}
+    \bm{R}_x(\phi) &= \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & \cos \phi & -\sin \phi \\
+        0 & \sin \phi & \cos \phi
+    \end{pmatrix}\\
+    \bm{R}_y(\theta) &= \begin{pmatrix}
+        \cos \theta & 0 & \sin \theta \\
+        0 & 1 & 0 \\
+        -\sin \theta & 0 & \cos \theta
+    \end{pmatrix}\\
+    \bm{R}_z(\psi) &= \begin{pmatrix}
+        \cos \psi & -\sin \psi & 0 \\
+        \sin \psi & \cos \psi & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+
+Matrix transformations in different refrence frames
+\begin{align*}
+    \bm{D}^a &= \bm{R}_b^a\bm{D}^b\bm{R}_a^b \\
+    (\bm{u}^b)^\times &= \bm{R}_a^b (\bm{u}^a)^\times \bm{R}_b^a
+\end{align*}
+
+The transformation of position and orientation from frame \(\mathit{b}\) to frame \(\mathit{a}\) is
+\begin{align*}
+    \bm{T}_b^a &= \begin{pmatrix}
+        \bm{R}_b^a & \bm{r}_{ab}^a \\
+        \bm{0}^T & 1
+    \end{pmatrix} \\
+    \bm{T}_b^a \begin{pmatrix}\bm{v}^b \\ 1\end{pmatrix}^T &= \begin{pmatrix}\bm{v}^a \\ 1\end{pmatrix}  \\
+    (\bm{T}_b^a)^{-1} &= \bm{T}_a^b = \begin{pmatrix}
+        \bm{R}_a^b & \bm{r}_{ba}^b \\
+        \bm{0}^T & 1
+    \end{pmatrix}
+\end{align*}
+
+The Special Euclidean group is the set of all transformations from one reference frames to another
+\[
+SE(3) = \left\{\bm{T} = \begin{pmatrix}\bm{R} & \bm{r} \\ \bm{0}^T & 1 \end{pmatrix}\in\RR^{3\times3}\middle|\bm{R}\in\,SO(3) \wedge \bm{r}\in\RR^3\right\}
+\]
+
+\setcounter{subsection}{4}
+\subsection{Euler Angles} %% -------------------------- 6 . 5 ------------- 
+
+
+\textbf{Roll-Pitch-Yaw Euler angles}
+\[\bm{R}_a^b = \bm{R}_z(\psi)\bm{R}_y(\theta)\bm{R}_x(\phi)\]
+\textbf{Classical Euler angles}. The orientation is described by a rotation bout the \(z\) axis, then the resulting \(y\) axis. And then again the resulting \(z\) axis.
+\[\bm{R}_a^b = \bm{R}_z(\psi)\bm{R}_y(\theta)\bm{R}_z(\phi)\]
+
+\subsection{Angle Axis Description of rotation} %% --------- 6 . 6 -------------
+\setcounter{subsubsection}{4}
+\subsubsection{Rotation Matrix}
+
+\textbf{Angle-axis parameters} All rotation matrices have an eigen vector with eigen value \(1\). A rotation can be uniquely described by the direction of this vector and an angle \(\theta\) being the rotatoin about this vector.
+\begin{align*}
+    & (\theta,\bm{k})\text{ s.t. }||\bm{k}|| = 1 \\
+    & \bm{R}_b^a = \cos\theta\bm{I} + \sin\theta(\bm{k}_a)^\times + (1-\cos\theta)\bm{k}_a\bm{k}_a^T \\
+    & \bm{R}_b^a = \exp\{\bm{k}^\times\theta\}
+\end{align*}
+
+\subsection{Euler parameters} %% -------------------------- 6 . 7 --------------
+\subsubsection{Definition}
+\begin{align*}
+    \eta &= \cos\frac{\theta}{2} \\
+    \bm{\epsilon} &= \bm{k}\sin\frac{\theta}{2} \\
+    \bm{R}_e(\eta,\bm{\epsilon}) &= \bm{I} + 2\eta\bm{\epsilon}^\times + 2\bm{\epsilon}^\times\bm{\epsilon}^\times
+\end{align*}
+
+%
+
+\setcounter{subsubsection}{2}
+\subsubsection{Quaternions}
+
+The following can be treated as a unit quaternion
+\begin{align*}
+    \bm{p} = \begin{pmatrix}\eta \\ \bm{\epsilon}\end{pmatrix}
+\end{align*}
+A unit quaternion satisfies
+\[\bm{p}^T\bm{p} = \eta^2 + \bm{\epsilon}^T\bm{\epsilon} = 1\]
+
+Quaternion product
+\begin{align*}
+    \begin{pmatrix}\alpha_1 \\ \bm{\beta}_1\end{pmatrix} \otimes \begin{pmatrix}\alpha_2 \\ \bm{\beta}_2\end{pmatrix} = 
+        \begin{pmatrix}\alpha_1\alpha_2-\bm{\beta}_1^T\bm{\beta}_2 \\ \alpha_1\bm{\beta}_2+\alpha_2\bm{\beta}_1 + \bm{\beta_1}^\times\bm{\beta_2}\end{pmatrix}
+\end{align*}
+
+\setcounter{subsubsection}{5}
+\subsubsection{Euler parameters from the rotation matrix}
+\begin{align*}
+    \bm{R} & = (r_{ij}) \\
+    \bm{z} &= \begin{pmatrix}z_0 & z_1 & z_2 & z_3 \end{pmatrix}^T := 2
+        \begin{pmatrix}\eta & \epsilon_1 & \epsilon_2 & \epsilon_3\end{pmatrix}^T \\
+            \bm{T} &:= r_{00} := \text{Trace} \bm{R}
+\end{align*}
+The algorithm from Shepperd (1978) goes like this:
+\begin{itemize}
+    \item Let \(i = \arg\max_i\{r_{ii}\}\)
+    \item Compute \(|z_i| = \sqrt{1+2r_{ii}-T}\)
+    \item Determine sign of \(z_i\)
+    \item Determine the rest of \(\bm{z}\) from equations below
+\end{itemize}
+\begin{align*}
+    z_0z_1 &= r_{32}-r_{23} & z_2z_3 &= r_{32}+r_{23} \\
+    z_0z_2 &= r_{13}-r_{31} & z_3z_1 &= r_{13}+r_{31} \\
+    z_0z_3 &= r_{21}-r_{12} & z_1z_2 &= r_{21}+r_{12} \\
+\end{align*}
+
+\subsection{Angular Velocity}
+
+Let \(R\in SO(3)\)
+\begin{align*}
+    &0 = \frac{d}{dt}(\bm{I}) = \frac{d}{dt}(\bm{R}\bm{R}^T) = \dot{\bm{R}}\bm{R}^T + \bm{R}(\dot{\bm{R}})^T \\
+    &\Rightarrow \dot{\bm{R}}\bm{R}^T \textit{skew-symmetric}
+\end{align*}
+
+Definition of angluar velocity
+\begin{align*}
+    (\bm{\omega}_{ab}^a)^\times &= \dot{\bm{R}_b^a}(\bm{R}_b^a)^T \Rightarrow \\
+    \dot{\bm{R}_b^a} &= (\bm{\omega}_{ab}^a)^\times\bm{R}_b^a \\
+    \dot{\bm{R}_b^a} &= \bm{R}_b^a(\bm{\omega}_{ab}^b)^\times
+\end{align*}
+It can be shown that
+\[\bm{\omega} = \dot{\theta}\bm{k}\]
+Where \(\theta\) and \(\bm{k}\) are Angle Axis parameters.
+\begin{align*}
+    \bm{\omega}_{ad}^a &= \bm{\omega}_{ab}^a + \bm{\omega}_{bc}^a + \bm{\omega}_{cd}^a \\
+    \dot{\bm{u}}^a &= \bm{R}_b^a(\dot{\bm{u}}^b + (\bm{\omega}_{ab}^b)^\times\bm{u}^b)
+\end{align*}
+
+\subsection{Kinematic diﬀerential equations}
+\setcounter{subsubsection}{3}
+\subsubsection{Euler Angles}
+
+\begin{align*}
+    \bm{\omega}_{ad}^a &= \begin{pmatrix}0 \\ 0 \\ \dot{\psi}\end{pmatrix} + 
+        \bm{R}_{z,\psi}\begin{pmatrix} 0 \\ \dot{\theta} \\ 0\end{pmatrix} +
+            \bm{R}_{z,\psi}\bm{R}_{y,\theta}\begin{pmatrix}\dot{\phi} \\ 0 \\ 0\end{pmatrix} \\
+                &= \begin{pmatrix}
+                    -\sin\psi\dot{\theta}+\cos\psi\cos\theta\dot{\phi} \\
+                    \cos\psi\dot{\theta}+\sin\psi\cos\theta\dot{\phi} \\
+                    \dot{\psi}-\sin\theta\dot{\phi}
+                \end{pmatrix}
+\end{align*}
