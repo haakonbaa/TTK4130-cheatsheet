@@ -1,0 +1,45 @@
+\setcounter{section}{3}
+\section{Lagrange Mechanics}
+\setcounter{section}{8}
+\setcounter{subsection}{1}
+\subsection{Lagrange Mechanics} %% ------------------------- 8 . 2 -------------
+
+\textbf{The lagrangian}. Define a set of generalized coordinates \(\bm{q}\). Let
+ \(T(\bm{q},\dot{\bm{q}},t)\) be the kinetic energy and 
+\(U(\bm{q},\bm{\dot{q}},t)\) the potential energy (Sometimes \(V\)). Then the lagrangian is
+defined to be
+\begin{align*}
+    L(\bm{q},\dot{\bm{q}},t) = T(\bm{q},\dot{\bm{q}},t)-U(\bm{q})
+\end{align*}
+The equation of motion is
+\begin{align*}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q_i}}\right) - \frac{\partial L}{\partial q_i} = \tau_i \\
+    \frac{d}{dt}\left(\nabla_{\dot{\bm{q}}}L\right) - \nabla_{\bm{q}}L = \bm{\tau}
+\end{align*}
+Where \(\tau_i\) is a generalized actuator force
+\begin{align*}
+    \tau_i = \sum_{k=1}^{N}\frac{\partial \bm{r_k}}{\partial q_i} \cdot \bm{F}_k
+\end{align*}
+\(\bm{r}_k(\bm{q})\) is the position of the point of application of the force \(\bm{F}_k\).
+In general \(\tau_i\) is a force or a torque.
+\newline
+
+\textbf{Constrained Lagrange}. Having the constraints
+\begin{align*}
+    \bm{c}(\bm{q}) = \bm{0}
+\end{align*}
+The system can be described by
+\begin{align*}
+    & L(\bm{q},\dot{\bm{q}},t) = T(\bm{q},\dot{\bm{q}},t)-U(\bm{q})  - \bm{z}^T\bm{c}(\bm{q}) \\
+    & \frac{d}{dt}\left(\nabla_{\dot{\bm{q}}}L\right) - \nabla_{\bm{q}}L = \bm{\tau} \\
+    & \bm{c}(\bm{q}) = \bm{0}
+\end{align*}
+
+\textbf{Baumgarte stabilization}. Instead of imposing
+\[\bm{c}(\bm{q}) =\bm{0}\]
+Impose
+\[\ddot{\bm{c}}+2\alpha\dot{\bm{c}}+\alpha^2\bm{c} = 0\]
+As to reduce drifts in the constraints resulting from 
+\[\ddot{\bm{c}}=\bm{0}\]
+not begin satisfied exactly when doing numeric computations.
+
