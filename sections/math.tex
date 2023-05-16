@@ -1,0 +1,42 @@
+\section{Math}
+\textbf{Inverse of \(2\times2\) Matrix}
+\begin{align*}
+    \begin{pmatrix}
+        a & b \\ c & d 
+        \end{pmatrix}^{-1} = 
+    \frac{1}{ad-bc}
+    \begin{pmatrix}
+        d & -b \\ -c & a 
+    \end{pmatrix}
+\end{align*}
+
+\textbf{Multivariable derivative rules}
+\begin{align*}
+    \frac{\partial}{\partial\bm{x}} \bm{a}^T\bm{x} &=  \bm{a}^T &
+    \nabla_{\bm{x}}\bm{a}^T\bm{x} &=  \bm{a} \\
+    \frac{\partial}{\partial\bm{x}} \bm{Ax} &=  \bm{A} &
+    \nabla_{\bm{x}}\bm{Ax} &= \bm{A}^T  \\
+    \frac{\partial}{\partial\bm{x}} \bm{x}^T\bm{A} &=  \bm{A}^T &
+    \nabla_{\bm{x}}\bm{x}^T\bm{A} &= \bm{A} \\
+\end{align*}
+Second order terms
+\begin{align*}
+    \frac{\partial}{\partial\bm{x}} \frac{1}{2}\bm{x}^T\bm{Ax} &=  \frac{1}{2}\bm{x}^T(\bm{A}^T+\bm{A}) \\
+    \nabla_{\bm{x}} \frac{1}{2}\bm{x}^T\bm{Ax} &=  \frac{1}{2}(\bm{A}^T+\bm{A})\bm{x} \\
+\end{align*}
+
+\textbf{Multivariable Chain rule}
+\begin{align*}
+    \frac{\partial\bm{f}(\bm{g}(\bm{x}))}{\partial\bm{x}} &= \frac{\partial\bm{f}}{\partial\bm{g}}
+    \frac{\partial\bm{g}}{\partial\bm{x}} \\
+    \frac{\partial\bm{f}(\bm{g}(\bm{x}),\bm{h}(\bm{x}))}{\partial\bm{x}} &= \frac{\partial\bm{f}}{\partial\bm{g}}
+     \frac{\partial\bm{g}}{\partial\bm{x}} + \frac{\partial\bm{f}}{\partial\bm{h}}\frac{\partial\bm{h}}{\partial\bm{x}}
+\end{align*}
+
+\textbf{Some derivatives}
+\begin{align*}
+    \frac{d}{dt}\sinh(t) &= \cosh(t) \\
+    \frac{d}{dt}\cosh(t) &= \sinh(t) \\
+    \frac{d}{dt}\tanh(t) &= \frac{d}{dt}\frac{\sinh(t)}{\cosh(t)} = \frac{1}{\cosh^2t} = 1-\tanh^2(x) \\
+    \frac{d}{dt}\arctan(t) &= \frac{1}{1+t^2} \\
+\end{align*}

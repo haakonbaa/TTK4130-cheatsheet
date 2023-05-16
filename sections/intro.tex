@@ -1,8 +1,75 @@
 \section{Intro}
 
-\subsection{What are models, what are simulations, notation}
+\setcounter{subsection}{1}
+\subsection{State space methods}
+\subsubsection{State space models} %% ---------------------- 1 . 2 . 1 ---------
+\textbf{State Space Model} is on the form
+\begin{align*}
+    \dot{\bm{x}} = \bm{f}(\bm{x},\bm{u},t)
+\end{align*}
 
-\subsection{System dynamics and differential equations.}
+\textbf{Linear time invariant system}
+\begin{align*}
+    \dot{\bm{x}} &= \bm{Ax}+\bm{Bu} \\
+    \bm{y} &= \bm{Cx + Du} \\
+    \bm{y} &= \bm{C}e^{\bm{A}t}\bm{x}(0) + \int_0^t\bm{C}e^{\bm{A}(t-\tau)}\bm{B}\bm{u}(t)\,d\tau+\bm{D}\bm{u}(t)
+\end{align*}
 
+\subsubsection{Second order models of mechanical systems} %% 1 . 2 . 2 ---------
+Second order models on the form
+\begin{align*}
+    \bm{M}(\bm{q})\bm{\ddot{q}} + \bm{f}(\bm{q},\bm{\dot{q}}) = \bm{u}
+\end{align*}
+Can be written as
+\begin{align*}
+    \dot{\begin{pmatrix}
+        \bm{q} \\ \bm{\dot{q}}
+    \end{pmatrix}} = \begin{pmatrix}
+        \bm{\dot{q}} \\  \bm{M}^{-1}(\bm{q})(-\bm{f}(\bm{q},\bm{\dot{q}})+\bm{u})
+    \end{pmatrix}
+\end{align*}
+\subsubsection{Linearization of state space models} %% ----- 1 . 2 . 3 ---------
 
+\textbf{Linearization of time varying systems}
+\begin{align*}
+    \dot{\bm{x}} &= \bm{f}(\bm{x},\bm{u},t) \\
+    \bm{y} &= \bm{h}(\bm{x},\bm{u},t)
+\end{align*}
+Find two functions \(\bm{x}_0\) and \(\bm{u}_0\) begin solutions to the sytem
+\begin{align*}
+    \dot{\bm{x}}_0 = \bm{f}(\bm{x}_0(t),\bm{u}_0(t),t)
+\end{align*}
+Define pertrubations
+\begin{align*}
+    \bm{\Delta x} &= \bm{x}_0(t) + \bm{\Delta x}(t) \\
+    \bm{\Delta u} &= \bm{u}_0(t) + \bm{\Delta u}(t) \\
+    \bm{\Delta y} &= \bm{y}_0(t) + \bm{\Delta y}(t)
+\end{align*}
+Let \(\mathcal{C} = \{\bm{x}_0(t),\bm{u}_0(t)\}\). The linearized system is
+\begin{align*}
+    \bm{\Delta \dot{x}} &\approx \frac{\partial\bm{f}}{\partial\bm{x}}\Big|_{\mathcal{C}} \bm{\Delta x} +
+        \frac{\partial\bm{f}}{\partial\bm{u}}\Big|_{\mathcal{C}}\bm{\Delta u} \\
+    \bm{\Delta \dot{y}} &\approx \frac{\partial\bm{h}}{\partial\bm{x}}\Big|_{\mathcal{C}} \bm{\Delta x} +
+        \frac{\partial\bm{h}}{\partial\bm{u}}\Big|_{\mathcal{C}}\bm{\Delta u} \\
+\end{align*}
+
+\setcounter{subsection}{4}
+\subsection{ODE's} %% From the compendium
+General formulation
+\begin{align*}
+    \varphi(y^{(m)},\cdots,y,u^{(m-1)},\cdots,u) = 0
+\end{align*}
+
+\textbf{Lipschitz continous}.A function \[f:\RR \rightarrow \RR\] is said to be \textit{Lipschitz continous} if
+\begin{align*}
+    &\exists c > 0 \in \RR & \textrm{s.t.}\\ &||f(x)-f(y)||<c||x-y|| & \forall x, y \in \RR
+\end{align*}
+
+\textbf{Theorem: existence of unique solution}. Consider the ODE
+\[\dot{x}=f(x)\]
+If \(f\) is Lipschitz continous then \(x(t)\) exists and is unique for all \(t\)
+
+\textbf{Theorem 2: existence of unique solution}. Consider the ODE
+\[\dot{x}=f(x)\]
+if \(f\) is continously differentiable (\(\frac{\partial f}{\partial x}\) exists and is continous), then the solution to the ODE exists and is unique on some time interval.
 
