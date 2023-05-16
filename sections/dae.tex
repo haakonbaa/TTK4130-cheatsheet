@@ -1,0 +1,83 @@
+\setcounter{section}{4}
+\section{Differential Algebraic Equations}
+\setcounter{section}{14}
+\setcounter{subsection}{1}
+\subsection{Preliminaries} %% ------------------------------ 14 . 2 ------------
+
+\setcounter{section}{5}
+\setcounter{subsection}{0}
+\subsection{Differential Algebraic Equations} %% ----------- 5 -----------------
+
+\textbf{Definition of DEA}. The differential equation defined by
+\begin{align*}
+    \bm{F}(\dot{\bm{x}},\bm{x},\bm{u},t) = \bm{0}
+\end{align*}
+Es a DAE if
+\begin{align*}
+    \frac{\partial \bm{F}}{\partial \dot{\bm{x}}} 
+\end{align*}
+is rank defficient
+\newline
+
+\textbf{Fully-explicit DAE}
+\begin{align*}
+    & \bm{F}(\dot{\bm{x}},\bm{x},\bm{z},\bm{u}) = \bm{0} \\
+    & \det\left|\frac{\partial \bm{F}}{\partial \dot{\bm{x}}}\right| = 0
+\end{align*}
+Can be rewritten as
+\begin{align*}
+    & \dot{\bm{x}} = \bm{v} \\
+    & \bm{0} = \bm{F}(\bm{v},\bm{x},\bm{z},\bm{u}) \\
+\end{align*}
+
+\textbf{Semi-explicit DAE}
+\begin{align*}
+    & \dot{\bm{x}} = \bm{f}(\bm{x},\bm{z},\bm{u}) \\
+    & \bm{0} = \bm{g}(\bm{x},\bm{z},\bm{u}) \\
+\end{align*}
+This can be rewritten as
+\begin{align*}
+    & \bm{F}(\dot{\bm{x}},\bm{x},\bm{z},\bm{u}) = \begin{pmatrix}
+        \dot{\bm{x}} - \bm{f}(\bm{x},\bm{z},\bm{u}) \\ \bm{g}(\bm{x},\bm{z},\bm{u})
+    \end{pmatrix} = \bm{0}\\
+\end{align*}
+
+\textbf{Tikhonov Theorem}. Consider the ordinary differential equation
+\begin{align*}
+    \dot{\bm{x}} = \bm{f}(\bm{x},\bm{z}) \\
+    \varepsilon \dot{\bm{z}} = \bm{g}(\bm{x},\bm{z})
+\end{align*}
+If \begin{itemize}
+    \item dynamics of \(\dot{\bm{z}} = \bm{g}(\bm{x},\bm{z})\) stable \(\forall \bm{x}\)
+    \item \(\frac{\partial \bm{g}}{\partial \bm{z}}\) is full rank
+\end{itemize}
+then
+\begin{align*}
+    \lim_{\epsilon \rightarrow 0} \bm{x}(t) = \bm{x}_0(t) \\
+    \lim_{\epsilon \rightarrow 0} \bm{z}(t) = \bm{z}_0(t)
+\end{align*}
+where \(\bm{z}_0(t)\) and \(\bm{x}_0(t)\) is the solution to the ODE above modified to a DAE where \(\varepsilon = 0\)
+\newline
+
+\textbf{Theorem: Solvability of DAE}. A fully implicit DAE with smooth
+\begin{align*}
+    \bm{F}(\dot{\bm{x}},\bm{x},\bm{z},\bm{u}) = \bm{0}
+\end{align*}
+Can be readily solved (solved for \(\dot{\bm{x}}\) and \(\bm{z}\)) if
+\begin{align*}
+    \begin{pmatrix}\frac{\partial \bm{F}}{\partial \dot{\bm{x}}} & \frac{\partial \bm{F}}{\partial \bm{z}} \end{pmatrix}
+\end{align*}
+is full rank on all trajectories \(\dot{\bm{x}}\), \(\bm{z}\), \(\bm{x}\) and \(\bm{u}\). Note that all \textbf{Index 1} DAEs fullfil these requirements. The theorem implies that
+\begin{align*}
+    \dot{\bm{x}} = \bm{f}(\bm{x},\bm{z},\bm{u}) \\
+    \bm{0} = \bm{g}(\bm{x},\bm{z},\bm{u})
+\end{align*}
+with smooth \(\bm{f}\) can be solved if
+\begin{align*}
+    \frac{\partial \bm{g}}{\partial \bm{z}}
+\end{align*}
+is full rank on all trajectories \(\bm{z}\), \(\bm{x}\) and \(\bm{u}\)
+\newline
+
+\textbf{Definition: Differential index of a DAE} is the numer of times the differentiation operator \(\frac{d}{dt}\)
+must be applied to the equations in order to convert the DAE into an ODE.
