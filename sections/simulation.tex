@@ -1,0 +1,160 @@
+\section{Simulation methods}
+
+\textbf{Butcher tableau}
+\begin{align*}
+\begin{array}{c|c}
+    \bm{c} & A  \\ \hline
+     & \bm{b}^T
+\end{array}
+\end{align*}
+\begin{align*}
+    K_n &= f(t_k+\Delta t c_n,x_n + \Delta t (A_n)K) \\
+    x_{k+1} &= x_k + \Delta t\bm{b}^TK
+\end{align*}
+The method is valid if
+\begin{align*}
+    c_n &= \Sigma_{i}A_{ni} \\
+    \Sigma_i \bm{b}_i &= 1
+\end{align*}
+The \textbf{stages} of a Runge Kutta method is the number of elements in \(\bm{c}\).
+The Butcher tableu defines an explicit integrator if and only if the diagonal
+elements and the upper-diagonal elements are zero.
+\newline
+
+\textbf{Explicit Euler}
+\begin{align*}
+    &\bm{x}_{k+1} = \bm{x}_k + \Delta t \cdot \bm{f}(\bm{x},\bm{u}) 
+    &\begin{array}{c|c}
+         0 & 0 \\ \hline
+          & 1
+    \end{array}
+\end{align*}
+Global error \(||\bm{x}_N-\bm{x}(T)|| = \mathcal{O}(\Delta t)\)
+\newline
+Region of stability \(R(z) = 1+z\)
+\newline
+
+\textbf{Explicit mid-point rule}
+\begin{align*}
+\begin{array}{c|cc}
+    0 & 0 & 0 \\
+    1/2 & 1/2 & 0 \\ \hline
+     & 0 & 1/2
+\end{array}
+\end{align*}
+Global error \(||\bm{x}_N-\bm{x}(T)|| = \mathcal{O}(\Delta t^2)\)
+\newline
+
+\textbf{Ralston's RK2}
+\begin{align*}
+\begin{array}{c|cc}
+    0 & 0 & 0 \\
+    2/3 & 2/3 & 0 \\ \hline
+     & 1/4 & 1/3
+\end{array}
+\end{align*}
+
+\textbf{Heun's RK2}
+\begin{align*}
+\begin{array}{c|cc}
+    0 & 0 & 0 \\
+    1 & 1 & 0 \\ \hline
+     & 1/2 & 1/2
+\end{array}
+\end{align*}
+
+\textbf{Generic second-order method}
+\begin{align*}
+\begin{array}{c|cc}
+    0 & 0 & 0 \\
+    \alpha & \alpha & 0 \\ \hline
+     & 1-\frac{1}{2\alpha} & \frac{1}{2\alpha}
+\end{array}
+\end{align*}
+
+\textbf{Generic third-order method}
+\begin{align*}
+\begin{array}{c|ccc}
+    0 & 0 & 0 & 0\\
+    \alpha & \alpha & 0 & 0\\
+    1 & 1+\frac{1-\alpha}{\alpha(3\alpha-2)} & -\frac{1-\alpha}{\alpha(3\alpha-2)} & 0 \\ \hline
+     & \frac{1}{2}-\frac{1}{6\alpha} & \frac{1}{6\alpha(1-\alpha)} & \frac{2-3\alpha}{6(1-\alpha)} 
+\end{array}
+\end{align*}
+
+
+\textbf{"The" RK4 method}
+\begin{align*}
+\begin{array}{c|cccc}
+    0 & 0 & 0 & 0 & 0\\
+    1/2 & 1/2 & 0 & 0 & 0\\
+    1/2 & 0 & 1/2 & 0 & 0\\
+    1 & 0 & 0 & 1 & 0 \\ \hline
+     & 1/6 & 1/3 & 1/3 & 1/6
+\end{array}
+\end{align*}
+Global error \(||\bm{x}_N-\bm{x}(T)|| = \mathcal{O}(\Delta t^4)\)
+\newline
+
+\textbf{One-Step error}
+\begin{align*}
+    ||\bm{x}_{k+1}-\bm{x}(t_{k+1})||
+\end{align*}
+Taylor expand \(\bm{x}(t)\) around \(t_k\). Do the same for \(\bm{x}_{k+1}\). Subtract and get the results
+\newline
+
+\textbf{Global error}
+Get error on timestep \(T\) by multiplying local error with \(N=\frac{T}{\Delta t}\)
+\newline
+
+\textbf{stability of integration method}: Consdier the ODE
+\begin{align*}
+    \dot{x}&=\lambda x & x(0) &= x_0
+\end{align*}
+Perform one step of the RK method to find
+\begin{align*}
+    x_{n+1} &= R(z)x_n & z &= \Delta t \lambda
+\end{align*}
+The integration method is unstable if
+\begin{align*}
+    |R(z)| > 1
+\end{align*}
+
+\textbf{A-stability}
+A method is a-stable if the region of stability is the entire left-half plane.
+\newline
+
+\textbf{Implicit methods}
+\begin{itemize}
+    \item Can chaieve high and systematic orders
+    \item Can be stable regardless of the step size 
+    \item Can handle the simulation of DAEs (must be index 1)
+    \item Can achieve order \(o=2s\) for any stage \(s\). Explicit methods can only achieve \(o=s\) and only for \(s\leq4\)
+\end{itemize}
+
+\textbf{Implicit Euler}
+\begin{align*}
+\begin{array}{c|cc}
+    1 & 1\\ \hline
+     & 1
+\end{array}
+\end{align*}
+\begin{align*}
+    k_1 &= f(x_n + \Delta t k_1) \\
+    x_{n+1} &= x_n + \Delta t k_1 \\
+    &= x_n + \Delta t f(x_{n+1})
+\end{align*}
+
+
+\textbf{Gauss-Legendre collocation method}
+Let \(s\) be the number of stages. Find the roots of 
+\[P_s(\tau)=\frac{1}{s!}\frac{d^s}{d\tau^s}\left((\tau^2-\tau)^s\right)\]
+Build polynomials
+\[\ell_i(\tau) = \prod_{j\neq i}\frac{\tau-\tau_j}{\tau_i-\tau_j}\]
+Integrate them
+\[L_i(\tau) = \int_0^\tau\ell_i(\xi)\,d\xi\]
+Calculate \(A\) ,\(\bm{b}\) and \(\bm{c}\)
+\begin{align*}
+    A_{ji} &= L_i(\tau_j) & b_i &= L_i(1) & c_j &=  \tau_j
+\end{align*}
+

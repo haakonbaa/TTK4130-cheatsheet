@@ -40,3 +40,18 @@ Second order terms
     &\frac{d}{dt}\tanh(t) = \frac{d}{dt}\frac{\sinh(t)}{\cosh(t)} &&= \frac{1}{\cosh^2t} = 1-\tanh^2(x) \\
     &\frac{d}{dt}\arctan(t) &&= \frac{1}{1+t^2} \\
 \end{align*}
+
+\textbf{Taylor's theorem} \newline
+Let \(k\geq1\) be an integer and let the function \(f:\RR \rightarrow \RR\) be \(k+1\) times differentiable at the point \(a\in\RR\). Then
+\begin{align*}
+    f(x) = \sum_{n=0}^{k}\frac{1}{n!}f^{(n)}(a)(x-a)^n + \frac{1}{(1+k)!}f^{(k+1)}(\xi)(x-a)^{k+1}
+\end{align*}
+for some \(\xi\in[x,a]\)
+
+
+\textbf{Common Taylor expansions}
+\begin{align*}
+    e^x &= \sum_{n=0}^{\infty}\frac{x^n}{n!} \\
+    \sin(x) &= \sum_{n=1}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!} \\
+    \cos(x) &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!} \\
+\end{align*}

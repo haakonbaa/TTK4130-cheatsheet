@@ -41,9 +41,9 @@ Find two functions \(\bm{x}_0\) and \(\bm{u}_0\) begin solutions to the sytem
 \end{align*}
 Define pertrubations
 \begin{align*}
-    \bm{\Delta x} &= \bm{x}_0(t) + \bm{\Delta x}(t) \\
-    \bm{\Delta u} &= \bm{u}_0(t) + \bm{\Delta u}(t) \\
-    \bm{\Delta y} &= \bm{y}_0(t) + \bm{\Delta y}(t)
+    \bm{x}(t) &= \bm{x}_0(t) + \bm{\Delta x}(t) \\
+    \bm{u}(t) &= \bm{u}_0(t) + \bm{\Delta u}(t) \\
+    \bm{y}(t) &= \bm{y}_0(t) + \bm{\Delta y}(t)
 \end{align*}
 Let \(\mathcal{C} = \{\bm{x}_0(t),\bm{u}_0(t)\}\). The linearized system is
 \begin{align*}
@@ -68,6 +68,15 @@ General formulation
 \textbf{Theorem: existence of unique solution}. Consider the ODE
 \[\dot{x}=f(x)\]
 If \(f\) is Lipschitz continous then \(x(t)\) exists and is unique for all \(t\)
+\newline
+
+\textbf{Mean Value Theorem} 
+suppose \(f\) is continous on \([a,b]\) and differnetiable on \((a,b)\) then
+\begin{align*}
+    \exists c\in(a,b) \textrm{ s.t. } f'(c)=\frac{f(b)-f(a)}{b-a}
+\end{align*}
+This can be sused to show that if \(f\) is continous and differentiable everywhere it is also Lipschitz.
+\newline
 
 \textbf{Theorem 2: existence of unique solution}. Consider the ODE
 \[\dot{x}=f(x)\]
