@@ -19,7 +19,7 @@ Velocity and Acceleration
     \vec{a}_p &:= \frac{{}^id^2}{dt^2}\vec{r}_p \\
               &= \vec{a}_o + \frac{{}^bd^2}{dt^2}\vec{r} + 2\vec{\omega}_{ib}\times\frac{{}^bd}{dt}\vec{r} + \vec{\alpha}_{ib}\times\vec{r} + \vec{\omega}_{ib}\times(\vec{\omega}_{ib}\times\vec{r})
 \end{align*}
-The last three terms are, respectively, the coriolis acceleration, Transveral acceleration and Centripetal acceleration. Note that
+The last three terms are, respectively, the coriolis acceleration, Transversal acceleration and Centripetal acceleration. Note that
 \begin{align*}
     \vec{a}_o = \frac{{}^id}{dt}\vec{v}_o = \frac{{}^bd}{dt}\vec{v}_o + \vec{\omega}_{ib}\times\vec{v}_o
 \end{align*}
@@ -66,7 +66,7 @@ Where \(\vec{r}_{Pj}\) is an arbitrary point along the line of action of \(\vec{
 \end{align*}
 
 
-\textbf{Rotational Inertia / The intertia dyadic}. The inertia matrix of the body \(b\) about the point \(c\) is
+\textbf{Rotational Inertia / The inertia dyadic}. The inertia matrix of the body \(b\) about the point \(c\) is
 \begin{align*}
     \bm{M}_{b/c} &= - \int_b \bm{r}^\times\bm{r}^\times\,dm \\
     &= \int_b (\bm{r}^T\bm{r}\mathbb{I} - \bm{r}\bm{r}^T)\,dm\\
@@ -86,7 +86,7 @@ Where \(\bm{r}\) is the distance vector from the center of mass to the mass elem
     \bm{M}_{b/c}^i = \bm{R}_b^i\bm{M}_{b/c}^b\bm{R}_i^b
 \end{align*}
 
-\textbf{Equations of motion}. Let \(b\) denote body, \(i\) an intertial frame, \(c\) the center of mass of \(b\), \(\bm{F}_{bc}\) a resultant force acting on \(b\) with line of action throgh \(c\) and \(\bm{T}_{bc}\) the torque about \(c\). Then
+\textbf{Equations of motion}. Let \(b\) denote body, \(i\) an inertial frame, \(c\) the center of mass of \(b\), \(\bm{F}_{bc}\) a resultant force acting on \(b\) with line of action through \(c\) and \(\bm{T}_{bc}\) the torque about \(c\). Then
 \begin{align*}
     \bm{F}_{bc} &= m\bm{a}_c \\
     \bm{T}_{bc} &= \bm{M}_{b/c}\bm{\alpha}_{ib} + \bm{\omega}_{ib}\times(\bm{M}_{b/c}\bm{\omega}_{ib})
@@ -103,7 +103,7 @@ On compact matrix form
             \begin{pmatrix}\bm{F}_{bc}^b \\ \bm{T}_{b/c}^b\end{pmatrix}
 \end{align*}
 
-\textbf{Kinetic energy}. The kinetic energy of the body \(b\) in an inertial refrence frame \(i\) is
+\textbf{Kinetic energy}. The kinetic energy of the body \(b\) in an inertial reference frame \(i\) is
 \begin{align*}
     K = \frac{1}{2}m(\bm{v}_c^b)^T\bm{v}_c^b + \frac{1}{2}(\bm{\omega}_{ib}^b)^T\bm{M}_{b/c}^b\bm{\omega}_{ib}^b
 \end{align*}

@@ -4,14 +4,14 @@
 \setcounter{subsection}{1}
 \subsection{Vectors} %% ------------------------------------ 6 . 2 -------------
 
-The \textit{skew-symetric} matrix form of the coordinate vector $\mathbf{u}$ is defined by
+The \textit{skew-symmetric} matrix form of the coordinate vector $\mathbf{u}$ is defined by
 \[\mathbf{u}^x=\begin{pmatrix}
     0    & -u_3 & u_2 \\
     u_3  & 0    & -u_1 \\
     -u_2 & u_1  & 0 
 \end{pmatrix}\]
 
-Notation: \(\bm{v}_{ab}^c\) means the vector from point \(a\) to point \(b\) (or often the origo of the reference frames \(a\) and \(b\)) described in the reference frame \(c\)
+Notation: \(\bm{v}_{ab}^c\) means the vector from point \(a\) to point \(b\) (or often the origin of the reference frames \(a\) and \(b\)) described in the reference frame \(c\)
 \newline
 
 \setcounter{subsection}{3}
@@ -33,7 +33,7 @@ Properties of the rotation matrix
 \(\bm{R}\) is a rotation matrix if and only if it is an element of \(\mathit{SO}(3)\)
 \[\mathit{SO}(3) = \{\bm{R} \in \RR^{3\times3} | \bm{R}^T\bm{R} = \bm{I} \wedge \det \bm{R} = 1\}\]
 
-Rotation matrices in three dimentions
+Rotation matrices in three dimensions
 \begin{align*}
     \bm{R}_x(\phi) &= \begin{pmatrix}
         1 & 0 & 0 \\
@@ -52,7 +52,7 @@ Rotation matrices in three dimentions
     \end{pmatrix}
 \end{align*}
 
-Matrix transformations in different refrence frames
+Matrix transformations in different reference frames
 \begin{align*}
     \bm{D}^a &= \bm{R}_b^a\bm{D}^b\bm{R}_a^b \\
     (\bm{u}^b)^\times &= \bm{R}_a^b (\bm{u}^a)^\times \bm{R}_b^a
@@ -89,10 +89,11 @@ SE(3) = \left\{\bm{T} = \begin{pmatrix}\bm{R} & \bm{r} \\ \bm{0}^T & 1 \end{pmat
 \setcounter{subsubsection}{4}
 \subsubsection{Rotation Matrix}
 
-\textbf{Angle-axis parameters} All rotation matrices have an eigen vector with eigen value \(1\). A rotation can be uniquely described by the direction of this vector and an angle \(\theta\) being the rotatoin about this vector.
+\textbf{Angle-axis parameters} All rotation matrices have an eigen vector with eigen value \(1\). A rotation can be uniquely described by the direction of this vector and an angle \(\theta\) being the rotation about this vector.
 \begin{align*}
     & (\theta,\bm{k})\text{ s.t. }||\bm{k}|| = 1 \\
     & \bm{R}_b^a = \cos\theta\bm{I} + \sin\theta(\bm{k}_a)^\times + (1-\cos\theta)\bm{k}_a\bm{k}_a^T \\
+    & \cos \theta = \frac{\textrm{trace}\bm{R}-1}{2} \\
     & \bm{R}_b^a = \exp\{\bm{k}^\times\theta\}
 \end{align*}
 
@@ -152,7 +153,7 @@ Let \(R\in SO(3)\)
     &\Rightarrow \dot{\bm{R}}\bm{R}^T \textit{skew-symmetric}
 \end{align*}
 
-Definition of angluar velocity
+Definition of angular velocity
 \begin{align*}
     (\bm{\omega}_{ab}^a)^\times &= \dot{\bm{R}_b^a}(\bm{R}_b^a)^T \Rightarrow \\
     \dot{\bm{R}_b^a} &= (\bm{\omega}_{ab}^a)^\times\bm{R}_b^a \\
@@ -166,7 +167,7 @@ Where \(\theta\) and \(\bm{k}\) are Angle Axis parameters.
     \dot{\bm{u}}^a &= \bm{R}_b^a(\dot{\bm{u}}^b + (\bm{\omega}_{ab}^b)^\times\bm{u}^b)
 \end{align*}
 
-\subsection{Kinematic diﬀerential equations}
+\subsection{Kinematic differential equations}
 \setcounter{subsubsection}{3}
 \subsubsection{Euler Angles}
 

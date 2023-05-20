@@ -35,11 +35,11 @@ Can be written as
     \dot{\bm{x}} &= \bm{f}(\bm{x},\bm{u},t) \\
     \bm{y} &= \bm{h}(\bm{x},\bm{u},t)
 \end{align*}
-Find two functions \(\bm{x}_0\) and \(\bm{u}_0\) begin solutions to the sytem
+Find two functions \(\bm{x}_0\) and \(\bm{u}_0\) being solutions to the system
 \begin{align*}
     \dot{\bm{x}}_0 = \bm{f}(\bm{x}_0(t),\bm{u}_0(t),t)
 \end{align*}
-Define pertrubations
+Define perturbations
 \begin{align*}
     \bm{x}(t) &= \bm{x}_0(t) + \bm{\Delta x}(t) \\
     \bm{u}(t) &= \bm{u}_0(t) + \bm{\Delta u}(t) \\
@@ -60,25 +60,25 @@ General formulation
     \varphi(y^{(m)},\cdots,y,u^{(m-1)},\cdots,u) = 0
 \end{align*}
 
-\textbf{Lipschitz continous}.A function \[f:\RR \rightarrow \RR\] is said to be \textit{Lipschitz continous} if
+\textbf{Lipschitz continuous}.A function \[f:\RR \rightarrow \RR\] is said to be \textit{Lipschitz continuous} if
 \begin{align*}
     &\exists c > 0 \in \RR & \textrm{s.t.}\\ &||f(x)-f(y)||<c||x-y|| & \forall x, y \in \RR
 \end{align*}
 
 \textbf{Theorem: existence of unique solution}. Consider the ODE
 \[\dot{x}=f(x)\]
-If \(f\) is Lipschitz continous then \(x(t)\) exists and is unique for all \(t\)
+If \(f\) is Lipschitz continuous then \(x(t)\) exists and is unique for all \(t\)
 \newline
 
 \textbf{Mean Value Theorem} 
-suppose \(f\) is continous on \([a,b]\) and differnetiable on \((a,b)\) then
+suppose \(f\) is continuous on \([a,b]\) and differentiable on \((a,b)\) then
 \begin{align*}
     \exists c\in(a,b) \textrm{ s.t. } f'(c)=\frac{f(b)-f(a)}{b-a}
 \end{align*}
-This can be sused to show that if \(f\) is continous and differentiable everywhere it is also Lipschitz.
+This can be used to show that if \(f\) is continuous and differentiable everywhere it is also Lipschitz.
 \newline
 
 \textbf{Theorem 2: existence of unique solution}. Consider the ODE
 \[\dot{x}=f(x)\]
-if \(f\) is continously differentiable (\(\frac{\partial f}{\partial x}\) exists and is continous), then the solution to the ODE exists and is unique on some time interval.
+if \(f\) is continuously differentiable (\(\frac{\partial f}{\partial x}\) exists and is continuous), then the solution to the ODE exists and is unique on some time interval.
 

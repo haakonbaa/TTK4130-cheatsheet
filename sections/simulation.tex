@@ -17,7 +17,7 @@ The method is \textbf{consistent} if
     \Sigma_i \bm{b}_i &= 1
 \end{align*}
 The \textbf{stages} of a Runge Kutta method is the number of elements in \(\bm{c}\).
-The Butcher tableu defines an explicit integrator if and only if the diagonal
+The Butcher Tableu defines an explicit integrator if and only if the diagonal
 elements and the upper-diagonal elements are zero.
 \newline
 
@@ -117,10 +117,10 @@ Taylor expand \(\bm{x}(t)\) around \(t_k\). Do the same for \(\bm{x}_{k+1}\). Su
 \newline
 
 \textbf{Global error}
-Get error on timestep \(T\) by multiplying local error with \(N=\frac{T}{\Delta t}\)
+Get error on time step \(T\) by multiplying local error with \(N=\frac{T}{\Delta t}\)
 \newline
 
-\textbf{stability of integration method}: Consdier the ODE
+\textbf{stability of integration method}: Consider the ODE
 \begin{align*}
     \dot{x}&=\lambda x & x(0) &= x_0
 \end{align*}
@@ -140,12 +140,12 @@ A method is A-stable if the region of stability is the entire left-half plane.
 \end{align*}
 
 \textbf{L-stability}.
-A Runge kutta method is L-stable if it is A-stable and
+A Runge Kutta method is L-stable if it is A-stable and
 \[\lim_{\omega \rightarrow \pm \infty}|R(i\omega h)|= 0\]
 
 \textbf{Implicit methods}
 \begin{itemize}
-    \item Can chaieve high and systematic orders
+    \item Can achieve high and systematic orders
     \item Can be stable regardless of the step size 
     \item Can handle the simulation of DAEs (must be index 1)
     \item Can give huge speed-up when system is stiff
@@ -209,17 +209,26 @@ The \(\bm{K}=(\bm{K}_1,\cdots,\bm{K}_s)^T\) vector / matrix can be found by solv
 \begin{align*}
     & \bm{r}(\bm{K},\bm{x}_k,\bm{z},\bm{u}(\cdot),t_k) = \\ 
     & \begin{pmatrix}
-        \bm{F(\bm{K}_1,\bm{x}_n+\Delta t\bm{a}_1^T\bm{K},\bm{z},\bm{u}(t_k+\Delta t c_1),t_k+\Delta t c_i)} \\ \vdots \\
-        \bm{F(\bm{K}_s,\bm{x}_n+\Delta t\bm{a}_s^T\bm{K},\bm{z},\bm{u}(t_k+\Delta t c_s),t_k+\Delta t c_i)}
+        \bm{F(\bm{K}_1,\bm{x}_n+\Delta t\bm{a}_1^T\bm{K},\bm{z}_1,\bm{u}(t_k+\Delta t c_1),t_k+\Delta t c_i)} \\ \vdots \\
+        \bm{F(\bm{K}_s,\bm{x}_n+\Delta t\bm{a}_s^T\bm{K},\bm{z}_s,\bm{u}(t_k+\Delta t c_s),t_k+\Delta t c_i)}
     \end{pmatrix} \\ &= \bm{0}
 \end{align*}
 for \(\bm{K}\) and \(\bm{z}\)
+\newline
 
+\textbf{Computational cost of ERK methods}. Let \(T_\textrm{ol}\) be the global tolerance. 
+\begin{align*}
+    ||\bm{x}_n-\bm{x}(T)|| &\leq c\Delta t^o\leq T_\textrm{ol} \\
+    \Delta t &\leq \left(\frac{T_\textrm{ol}}{c}\right)^{(1/o)}
+\end{align*}
+The number of integrator steps is
+\begin{align*}
+    N = T/{\Delta t}
+\end{align*}
+The system dynamics must be evaluated \(s\) times for each integration step
+\begin{align*}
+    n &= Ns = \frac{sT}{\Delta t} \geq sT\left(\frac{T_\textrm{ol}}{c}\right)^{-1/o} \\
+    \frac{n}{T} &\geq s\left(\frac{T_{\textrm{ol}}}{c}\right)^{-1/o}
+\end{align*}
 
-
-
-
-
-
-
-
+\(n\) is the number of function evaluations, \(T\) is the simulation time, \(s\) = \(\#\) stages. \(T_\textrm{ol}\) is the global tolerance and \(o\) is the order. Using the correlation between maximum order and number of stages we get that the optimum order is between 3 and 6.
