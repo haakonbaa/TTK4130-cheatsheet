@@ -11,7 +11,7 @@
     K_n &= f(t_k+\Delta t c_n,x_n + \Delta t (A_n)K) \\
     x_{k+1} &= x_k + \Delta t\bm{b}^TK
 \end{align*}
-The method is valid if
+The method is \textbf{consistent} if
 \begin{align*}
     c_n &= \Sigma_{i}A_{ni} \\
     \Sigma_i \bm{b}_i &= 1
@@ -20,6 +20,19 @@ The \textbf{stages} of a Runge Kutta method is the number of elements in \(\bm{c
 The Butcher tableu defines an explicit integrator if and only if the diagonal
 elements and the upper-diagonal elements are zero.
 \newline
+
+\textbf{Stability function}
+For the Butcher Tableu
+\begin{align*}
+\begin{array}{c|c}
+    \bm{c} & \bm{A}  \\ \hline
+     & \bm{b}^T
+\end{array}
+\end{align*}
+The stability function is
+\begin{align*}
+    R(z) = \frac{\det|\mathbb{I}-z(\bm{A}-\bm{1}\bm{b}^T)|}{\det|\mathbb{I}-z\bm{A}|}
+\end{align*}
 
 \textbf{Explicit Euler}
 \begin{align*}
@@ -31,7 +44,7 @@ elements and the upper-diagonal elements are zero.
 \end{align*}
 Global error \(||\bm{x}_N-\bm{x}(T)|| = \mathcal{O}(\Delta t)\)
 \newline
-Region of stability \(R(z) = 1+z\)
+Stability function \(R(z) = 1+z\)
 \newline
 
 \textbf{Explicit mid-point rule}
@@ -121,14 +134,21 @@ The integration method is unstable if
 \end{align*}
 
 \textbf{A-stability}
-A method is a-stable if the region of stability is the entire left-half plane.
-\newline
+A method is A-stable if the region of stability is the entire left-half plane.
+\begin{align*}
+    |R(\lambda\Delta t)|\leq 1 \forall \lambda \in \CC \textrm{ s.t. } \mathcal{R}(\lambda) \leq 0
+\end{align*}
+
+\textbf{L-stability}.
+A Runge kutta method is L-stable if it is A-stable and
+\[\lim_{\omega \rightarrow \pm \infty}|R(i\omega h)|= 0\]
 
 \textbf{Implicit methods}
 \begin{itemize}
     \item Can chaieve high and systematic orders
     \item Can be stable regardless of the step size 
     \item Can handle the simulation of DAEs (must be index 1)
+    \item Can give huge speed-up when system is stiff
     \item Can achieve order \(o=2s\) for any stage \(s\). Explicit methods can only achieve \(o=s\) and only for \(s\leq4\)
 \end{itemize}
 
@@ -147,7 +167,7 @@ A method is a-stable if the region of stability is the entire left-half plane.
 
 
 \textbf{Gauss-Legendre collocation method}
-Let \(s\) be the number of stages. Find the roots of 
+Generates order \(o=2s\) A-stable IRK methods. Let \(s\) be the number of stages. Find the roots \((\tau_i)\) of 
 \[P_s(\tau)=\frac{1}{s!}\frac{d^s}{d\tau^s}\left((\tau^2-\tau)^s\right)\]
 Build polynomials
 \[\ell_i(\tau) = \prod_{j\neq i}\frac{\tau-\tau_j}{\tau_i-\tau_j}\]
@@ -158,3 +178,24 @@ Calculate \(A\) ,\(\bm{b}\) and \(\bm{c}\)
     A_{ji} &= L_i(\tau_j) & b_i &= L_i(1) & c_j &=  \tau_j
 \end{align*}
 
+\textbf{Adaptive integrator}. 
+Use two methods: \(x_{n+1}\) and \(\hat{x}_{n+1}\), of different order: \(p\) and \(p+1\). The local error is
+\begin{align*}
+    \epsilon_{n+1} &:= |x_{n+1}-\hat{x}_{n+1}| \\
+    &\approx \mathcal{O}(\Delta t^{p+1})- \mathcal{O}(\Delta t^{p+2}) \\ 
+    &\approx C\Delta t^{p+1} \\
+    e_{\textrm{tol}} &=  C\Delta t^{p+1}_{\textrm{new}} \Rightarrow \\
+    \Delta t_{\textrm{new}} &= \Delta t \left(\frac{e_{\textrm{tol}}}{\epsilon_{n+1}}\right)^{\frac{1}{p+1}}
+\end{align*}
+
+\textbf{Newtons method}
+\begin{align*}
+    \bm{f}(\bm{x}+\Delta \bm{x}) &\approx  \bm{f}(\bm{x}) + \frac{\partial \bm{f}}{\partial \bm{x}}(\bm{x})\Delta \bm{x}  = \bm{0} \\
+    \Delta \bm{x} &= - \left(\frac{\partial \bm{f}}{\partial \bm{x}}(\bm{x})\right)^{-1}\bm{f}(\bm{x}) \\
+    \bm{x}_{n+1} &= \bm{x}_n + \alpha \Delta \bm{x}
+\end{align*}
+\begin{itemize}
+    \item May not work if jacobian is singular
+    \item Has quadratic convergence when it converges
+    \item May diverge
+\end{itemize}
