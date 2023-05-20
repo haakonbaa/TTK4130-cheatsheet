@@ -199,3 +199,27 @@ Use two methods: \(x_{n+1}\) and \(\hat{x}_{n+1}\), of different order: \(p\) an
     \item Has quadratic convergence when it converges
     \item May diverge
 \end{itemize}
+
+\textbf{RK method on implicit DAEs/ODEs}
+Given the implicit ODE / DAE
+\begin{align*}
+    \bm{F}(\dot{\bm{x}},\bm{x},\bm{z},\bm{u},t) = \bm{0}
+\end{align*}
+The \(\bm{K}=(\bm{K}_1,\cdots,\bm{K}_s)^T\) vector / matrix can be found by solving
+\begin{align*}
+    & \bm{r}(\bm{K},\bm{x}_k,\bm{z},\bm{u}(\cdot),t_k) = \\ 
+    & \begin{pmatrix}
+        \bm{F(\bm{K}_1,\bm{x}_n+\Delta t\bm{a}_1^T\bm{K},\bm{z},\bm{u}(t_k+\Delta t c_1),t_k+\Delta t c_i)} \\ \vdots \\
+        \bm{F(\bm{K}_s,\bm{x}_n+\Delta t\bm{a}_s^T\bm{K},\bm{z},\bm{u}(t_k+\Delta t c_s),t_k+\Delta t c_i)}
+    \end{pmatrix} \\ &= \bm{0}
+\end{align*}
+for \(\bm{K}\) and \(\bm{z}\)
+
+
+
+
+
+
+
+
+
