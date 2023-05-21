@@ -165,6 +165,14 @@ A Runge Kutta method is L-stable if it is A-stable and
     &= x_n + \Delta t f(x_{n+1})
 \end{align*}
 
+\textbf{Trapezoidal method}
+\begin{align*}
+\begin{array}{c|cc}
+    0 & 0 & 0 \\
+    1  & 1/2 & 1/2 \\ \hline
+     & 1/2 & 1/2
+\end{array}
+\end{align*}
 
 \textbf{Gauss-Legendre collocation method}
 Generates order \(o=2s\) A-stable IRK methods. Let \(s\) be the number of stages. Find the roots \((\tau_i)\) of 

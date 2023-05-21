@@ -1,5 +1,9 @@
 # TTK4130 Cheat Sheet
 
+## Download
+View and Download: [cheat-sheet.pdf](https://raw.githubusercontent.com/haakonbaa/TTK4130-cheatsheet/main/main.pdf)
+
+... or view the PDF on GitHub
 [cheat-sheet.pdf](./main.pdf)
 
 ## Compile
