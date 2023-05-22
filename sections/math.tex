@@ -39,26 +39,31 @@ Second order terms
     &\frac{d}{dt}\sinh(t) &&= \cosh(t) \\
     &\frac{d}{dt}\cosh(t) &&= \sinh(t) \\
     &\frac{d}{dt}\tanh(t) = \frac{d}{dt}\frac{\sinh(t)}{\cosh(t)} &&= \frac{1}{\cosh^2t} = 1-\tanh^2(x) \\
-    &\frac{d}{dt}\arctan(t) &&= \frac{1}{1+t^2} \\
+    &\frac{d}{dt}\arctan(t) &&= \frac{1}{1+t^2}
 \end{align*}
 
 \textbf{Taylor's theorem} \newline
 Let \(k\geq1\) be an integer and let the function \(f:\RR \rightarrow \RR\) be \(k+1\) times differentiable at the point \(a\in\RR\). Then
 \begin{align*}
-    f(x) = \sum_{n=0}^{k}\frac{1}{n!}f^{(n)}(a)(x-a)^n + \frac{1}{(1+k)!}f^{(k+1)}(\xi)(x-a)^{k+1}
+    f(x) &= \sum_{n=0}^{k}\frac{1}{n!}f^{(n)}(a)(x-a)^n \\
+     &+ \frac{1}{(1+k)!}f^{(k+1)}(\xi)(x-a)^{k+1}
 \end{align*}
-for some \(\xi\in[x,a]\)
+for some \(\xi\in[x,a]\) \newline
 
 
 \textbf{Common Taylor expansions}
 \begin{align*}
     e^x &= \sum_{n=0}^{\infty}\frac{x^n}{n!} \\
     \sin(x) &= \sum_{n=1}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!} \\
-    \cos(x) &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!} \\
+    \cos(x) &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!}
 \end{align*}
 
 \textbf{Integration in polar coordinates}
-\[dA = r\,dr\,d\theta\]
+\begin{align*}
+    x & = r \cos \theta \\
+    y & = r \sin \theta \\
+    dA & = r\,dr\,d\theta
+\end{align*}
 
 \textbf{Integration in spherical coordinates}
 \begin{align*}
@@ -66,4 +71,32 @@ for some \(\xi\in[x,a]\)
     y & = \rho \sin \phi \sin \theta \\
     z & = \rho \cos \phi \\
     dV &= \rho^2 \sin \phi \, d\rho \, d\phi \, d\theta
+\end{align*}
+
+\textbf{trigonometric identities}
+\begin{align*}
+    i \sin \theta &= \sinh {i\theta} \\
+    \cos \theta &= \cosh {i\theta} \\
+    \cosh x & = (e^x+e^{-x})/2 \\
+    \sinh x & = (e^x-e^{-x})/2 \\
+    \sin^2 x & = (1-\cos{2x})/2 \\
+    \cos^2 x & = (1+\cos{2x})/2
+\end{align*}
+
+\textbf{Implicit function theorem in} \(\RR^{n+1}\) \newline
+Let \(\mathcal{D}\) be an open subset of \(\RR^{n+1}\) and let \(f:\mathcal{D}\rightarrow\RR\)
+be a function of the variables \(\bm{x}\) and \(y\) with continuous partial derivatives. Assume
+the point \((\bm{a},b)\in\mathcal{D}\) fulfills 
+\[f(\bm{a},b) = 0 \textrm{ and } \frac{\partial f}{\partial y}(\bm{a},b) \neq 0\]
+then there exists a differentiable function \(g:A\rightarrow \RR\) where
+\[A=\{\bm{x}\in\RR^n:||\bm{x}-\bm{a}||<\rho\}\]
+for some \(\rho > 0\). \(g\) satisfies
+\[g(\bm{a})=b \textrm{ and } f(\bm{x},g(\bm{x}))=0\]
+The derivative of \(g\) is
+\[\frac{\partial g}{\partial x_i}(\bm{x}) = -\frac{\frac{\partial f}{\partial x_i}(\bm{x},g(\bm{x}))}{\frac{\partial f}{\partial y}(\bm{x},g(\bm{x}))}\]
+
+
+\textbf{Miscellaneous}
+\begin{align*}
+    \bm{x}^\times\bm{x}^\times = \bm{x}\bm{x}^T - \bm{x}^T\bm{x}\mathbb{I}
 \end{align*}

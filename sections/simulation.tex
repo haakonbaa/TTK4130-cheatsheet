@@ -141,7 +141,7 @@ A method is A-stable if the region of stability is the entire left-half plane.
 
 \textbf{L-stability}.
 A Runge Kutta method is L-stable if it is A-stable and
-\[\lim_{\omega \rightarrow \pm \infty}|R(i\omega h)|= 0\]
+\[\lim_{\omega \rightarrow \pm \infty}|R(i\omega \Delta t)|= 0\]
 
 \textbf{Implicit methods}
 \begin{itemize}
@@ -217,8 +217,8 @@ The \(\bm{K}=(\bm{K}_1,\cdots,\bm{K}_s)^T\) vector / matrix can be found by solv
 \begin{align*}
     & \bm{r}(\bm{K},\bm{x}_k,\bm{z},\bm{u}(\cdot),t_k) = \\ 
     & \begin{pmatrix}
-        \bm{F(\bm{K}_1,\bm{x}_n+\Delta t\bm{a}_1^T\bm{K},\bm{z}_1,\bm{u}(t_k+\Delta t c_1),t_k+\Delta t c_i)} \\ \vdots \\
-        \bm{F(\bm{K}_s,\bm{x}_n+\Delta t\bm{a}_s^T\bm{K},\bm{z}_s,\bm{u}(t_k+\Delta t c_s),t_k+\Delta t c_i)}
+        \bm{F(\bm{K}_1,\bm{x}_n+\Delta t\bm{a}_1^T\bm{K},\bm{z}_1,\bm{u}(t_k+\Delta t c_1),t_k+\Delta t c_1)} \\ \vdots \\
+        \bm{F(\bm{K}_s,\bm{x}_n+\Delta t\bm{a}_s^T\bm{K},\bm{z}_s,\bm{u}(t_k+\Delta t c_s),t_k+\Delta t c_s)}
     \end{pmatrix} \\ &= \bm{0}
 \end{align*}
 for \(\bm{K}\) and \(\bm{z}\)

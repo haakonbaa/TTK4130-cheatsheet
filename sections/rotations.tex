@@ -71,9 +71,9 @@ The transformation of position and orientation from frame \(\mathit{b}\) to fram
     \end{pmatrix}
 \end{align*}
 
-The Special Euclidean group is the set of all transformations from one reference frames to another
+The Special Euclidean group is the set of all transformations from one reference frame to another
 \[
-SE(3) = \left\{\bm{T} = \begin{pmatrix}\bm{R} & \bm{r} \\ \bm{0}^T & 1 \end{pmatrix}\in\RR^{3\times3}\middle|\bm{R}\in\,SO(3) \wedge \bm{r}\in\RR^3\right\}
+SE(3) = \left\{\bm{T} = \begin{pmatrix}\bm{R} & \bm{r} \\ \bm{0}^T & 1 \end{pmatrix}\in\RR^{4\times4}\middle|\bm{R}\in\,SO(3) \wedge \bm{r}\in\RR^3\right\}
 \]
 
 \setcounter{subsection}{4}
@@ -92,7 +92,8 @@ SE(3) = \left\{\bm{T} = \begin{pmatrix}\bm{R} & \bm{r} \\ \bm{0}^T & 1 \end{pmat
 \textbf{Angle-axis parameters} All rotation matrices have an eigen vector with eigen value \(1\). A rotation can be uniquely described by the direction of this vector and an angle \(\theta\) being the rotation about this vector.
 \begin{align*}
     & (\theta,\bm{k})\text{ s.t. }||\bm{k}|| = 1 \\
-    & \bm{R}_b^a = \cos\theta\bm{I} + \sin\theta(\bm{k}_a)^\times + (1-\cos\theta)\bm{k}_a\bm{k}_a^T \\
+    & \bm{R}_b^a = \cos\theta\mathbb{I} + \sin\theta(\bm{k}_a)^\times + (1-\cos\theta)\bm{k}_a\bm{k}_a^T \\
+    & \bm{R}_b^a = \mathbb{I} + \sin\theta(\bm{k}_a)^\times + (1-\cos\theta)\bm{k}_a^\times\bm{k}_a^\times \\
     & \cos \theta = \frac{\textrm{trace}\bm{R}-1}{2} \\
     & \bm{R}_b^a = \exp\{\bm{k}^\times\theta\}
 \end{align*}

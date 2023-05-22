@@ -58,9 +58,9 @@ Where \(\vec{r}_{Pj}\) is an arbitrary point along the line of action of \(\vec{
 
 \subsection{Newton-Euler Equations for rigid bodies} %% ---- 7 . 3 -------------
 
-\textbf{Angular Momentum}. The angular momentum of the body \(b\) about the center of mass \(c\) is
+\textbf{Angular Momentum}. The angular momentum of the body \(b\) about the point \(c\) is
 \begin{align*}
-    \bm{h}_{b/c} &= \int_b \bm{r}\times\bm{v} \,dm \\
+    \bm{h}_{b/c} &= \int_\mathcal{B} \bm{r}\times\bm{v} \,dm \\
     &= \bm{M}_{b/c}\bm{\omega}_{ib} \\
     \bm{T}_{bc} &= \frac{d}{dt}\bm{h}_{b/c}
 \end{align*}
@@ -76,7 +76,7 @@ Where \(\vec{r}_{Pj}\) is an arbitrary point along the line of action of \(\vec{
         -\bm{I}_{xz} & -\bm{I}_{yz} & \bm{I}_{zz} \\
     \end{pmatrix}
 \end{align*}
-Where \(\bm{r}\) is the distance vector from the center of mass to the mass element being integrated
+Where \(\bm{r}\) is the distance vector from the point \(c\) to the mass element being integrated
 \begin{align*}
     \bm{I}_{xx} &= \int_b y^2 + z^2  \,dm & \bm{I}_{xy} = \int_b xy \,dm \\
     \bm{I}_{yy} &= \int_b x^2 + z^2  \,dm & \bm{I}_{xz} = \int_b xz \,dm\\
@@ -111,6 +111,6 @@ On compact matrix form
 \textbf{The parallel axes theorem}. The inertia matrix of \(b\) about \(o\) is related to the inertia matrix of \(b\) about \(c\) according to
 \begin{align*}
     \bm{M}_{b/o}^b &= \bm{M}_{b/c}^b-m(\bm{r}_g^b)^\times(\bm{r}_g^b)^\times \\
-    &= \bm{M}_{b/c}^b-m(||\bm{r}_g^b||^2\mathbb{I}-\bm{r}_g^b(\bm{r}_g^b)^T)
+    &= \bm{M}_{b/c}^b+m(||\bm{r}_g^b||^2\mathbb{I}-\bm{r}_g^b(\bm{r}_g^b)^T)
 \end{align*}
 Where \(\bm{r}_g^b\) is the vector from \(c\) to \(o\)
